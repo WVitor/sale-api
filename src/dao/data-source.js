@@ -12,8 +12,8 @@ var AppDataSourceDEV = new typeorm_1.DataSource({
     database: process.env.DEV_DB_DATABASE,
     synchronize: true,
     logging: false,
-    entities: ["".concat(__dirname, "/../entity/*[.ts,.js]")],
-    migrations: ["".concat(__dirname, "/../migration/*[.ts,.js]")],
+    entities: ["".concat(__dirname, "/../entity/*{.ts,.js}")],
+    migrations: ["".concat(__dirname, "/../migration/*{.ts,.js}")],
     subscribers: [],
 });
 var AppDataSourcePROD = new typeorm_1.DataSource({
@@ -25,8 +25,8 @@ var AppDataSourcePROD = new typeorm_1.DataSource({
     database: process.env.PROD_DB_DATABASE,
     synchronize: true,
     logging: false,
-    entities: ["".concat(__dirname, "/../entity/*[.ts,.js]")],
-    migrations: ["".concat(__dirname, "/../migration/*[.ts,.js]")],
+    entities: ["".concat(__dirname, "/../entity/*{.ts,.js}")],
+    migrations: ["".concat(__dirname, "/../migration/*{.ts,.js}")],
     subscribers: [],
 });
 exports.AppDataSource = process.env.PROD === 'true' ? AppDataSourcePROD : AppDataSourceDEV;

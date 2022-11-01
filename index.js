@@ -62,7 +62,7 @@ app.use(ExpressSession({
         path: require('path').join(require('os').tmpdir(), 'sessions')
     }),
     cookie: {
-        secure: false,
+        secure: process.env.PROD === 'true' ? true : false,
         maxAge: 1800000,
         httpOnly: true,
     },
@@ -73,23 +73,17 @@ app.use(function (req, res, next) {
     }
     next();
 });
-app.use(function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        Master(process.env.ADMIN);
-        next();
-        return [2 /*return*/];
-    });
-}); });
-app.get('/', function (req, res) {
-    res.status(200).json({ message: "bem vindo." });
-});
 app.use(tipoUsuarioRoutes_1.tipoUsuarioRoutes);
 app.use(funcionalidadesRoutes_1.funcionalidadesRoutes);
 app.use(usuarioRoutes_1.usuarioRoutes);
 app.use(autenticacaoRoutes_1.autenticacaoRoutes);
 app.use(produtosRoutes_1.produtosRoutes);
+app.get('/', function (req, res) {
+    res.status(200).json({ message: "bem vindo." });
+});
 data_source_1.AppDataSource.initialize().then(function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
+        Master(process.env.ADMIN);
         app.listen(process.env.PORT, function () {
             console.log("Escutando na porta ".concat(process.env.PORT));
             if (process.env.PROD === 'true') {

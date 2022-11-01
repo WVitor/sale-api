@@ -196,7 +196,6 @@ var AutenticacaoController = /** @class */ (function () {
                         return res.status(400).json({ error: 'token expirado' });
                     }
                 });
-                console.log(token);
                 return [2 /*return*/, res.status(200).json({ message: 'token validado' })];
             });
         });
