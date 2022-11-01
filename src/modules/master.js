@@ -47,15 +47,14 @@ var Master = function (master, email) { return __awaiter(void 0, void 0, void 0,
             case 0: return [4 /*yield*/, TipoUsuarioRepository_1.TipoUsuarioRepository.findOneByMaster(master)];
             case 1:
                 tipoUsuario = _a.sent();
-                return [4 /*yield*/, FuncionalidadeRepository_1.FuncionalidadeRepository.find()];
-            case 2:
-                funcionalidades = _a.sent();
-                if (!!tipoUsuario) return [3 /*break*/, 4];
+                if (!!tipoUsuario) return [3 /*break*/, 3];
                 return [4 /*yield*/, TipoUsuarioRepository_1.TipoUsuarioRepository.save({ nome: master, nivel: 3 })];
-            case 3:
+            case 2:
                 tipoUsuario = _a.sent();
-                _a.label = 4;
+                _a.label = 3;
+            case 3: return [4 /*yield*/, FuncionalidadeRepository_1.FuncionalidadeRepository.find()];
             case 4:
+                funcionalidades = _a.sent();
                 if (!(tipoUsuario.funcionalidades == null || tipoUsuario.funcionalidades.length < funcionalidades.length)) return [3 /*break*/, 6];
                 tipoUsuario.funcionalidades = funcionalidades;
                 return [4 /*yield*/, TipoUsuarioRepository_1.TipoUsuarioRepository.save(tipoUsuario)];
