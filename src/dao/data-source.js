@@ -15,6 +15,9 @@ var AppDataSourceDEV = new typeorm_1.DataSource({
     entities: ["".concat(__dirname, "/../entity/*{.ts,.js}")],
     migrations: ["".concat(__dirname, "/../migration/*{.ts,.js}")],
     subscribers: [],
+    extra: {
+        connectionLimit: 5
+    }
 });
 var AppDataSourcePROD = new typeorm_1.DataSource({
     type: "mysql",
