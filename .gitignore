@@ -4,6 +4,3 @@ node_modules/
 tmp/
 temp/
 .env
-tsconfig.json
-src/
-index.ts
