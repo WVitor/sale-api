@@ -83,14 +83,18 @@ app.get('/', function (req, res) {
 });
 data_source_1.AppDataSource.initialize().then(function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        Master(process.env.ADMIN);
-        app.listen(process.env.PORT, function () {
-            console.log("Escutando na porta ".concat(process.env.PORT));
-            if (process.env.PROD === 'true') {
-                console.log("rodando em banco de producao");
-            }
-        });
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Master(process.env.ADMIN, process.env.ADMIN_EMAIL)];
+            case 1:
+                _a.sent();
+                app.listen(process.env.PORT, function () {
+                    console.log("Escutando na porta ".concat(process.env.PORT));
+                    if (process.env.PROD === 'true') {
+                        console.log("rodando em banco de producao");
+                    }
+                });
+                return [2 /*return*/];
+        }
     });
 }); }).catch(function (error) { return console.log(error); });
 //# sourceMappingURL=index.js.map

@@ -40,7 +40,7 @@ var FuncionalidadeRepository_1 = require("../repositories/FuncionalidadeReposito
 var TipoUsuarioRepository_1 = require("../repositories/TipoUsuarioRepository");
 var UsuarioRepository_1 = require("../repositories/UsuarioRepository");
 var bcrypt = require('bcryptjs');
-var Master = function (master) { return __awaiter(void 0, void 0, void 0, function () {
+var Master = function (master, email) { return __awaiter(void 0, void 0, void 0, function () {
     var tipoUsuario, funcionalidades, usuario, salt, pwd;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -62,13 +62,13 @@ var Master = function (master) { return __awaiter(void 0, void 0, void 0, functi
             case 5:
                 _a.sent();
                 _a.label = 6;
-            case 6: return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.findOneBy({ email: process.env.ADMIN_EMAIL })];
+            case 6: return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.findOneBy({ email: email })];
             case 7:
                 usuario = _a.sent();
                 if (!!usuario) return [3 /*break*/, 9];
                 salt = bcrypt.genSaltSync(10);
                 pwd = bcrypt.hashSync(process.env.ADMIN_PWD, salt);
-                return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.save({ nome: master, email: process.env.ADMIN_EMAIL, password: pwd, tipo: tipoUsuario })];
+                return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.save({ nome: master, email: email, password: pwd, tipo: tipoUsuario })];
             case 8:
                 usuario = _a.sent();
                 _a.label = 9;
