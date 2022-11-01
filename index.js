@@ -92,6 +92,9 @@ data_source_1.AppDataSource.initialize().then(function () { return __awaiter(voi
     return __generator(this, function (_a) {
         app.listen(process.env.PORT, function () {
             console.log("Escutando na porta ".concat(process.env.PORT));
+            if (process.env.PROD === 'true') {
+                console.log("rodando em banco de producao");
+            }
         });
         return [2 /*return*/];
     });
