@@ -39,6 +39,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProdutosController = void 0;
 var BaixaRepository_1 = require("../repositories/BaixaRepository");
 var ProdutoRepository_1 = require("../repositories/ProdutoRepository");
+var moment = require("moment");
+var otc = require("objects-to-csv");
+var fs = require("fs");
 var ProdutosController = /** @class */ (function () {
     function ProdutosController() {
     }
@@ -231,6 +234,36 @@ var ProdutosController = /** @class */ (function () {
                     case 3:
                         error_7 = _b.sent();
                         console.log(error_7);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProdutosController.exportarPlanilha = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var produtos, csv, error_8;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.planilhaData()];
+                    case 1:
+                        produtos = _a.sent();
+                        csv = new otc(produtos);
+                        return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
+                    case 2:
+                        _a.sent();
+                        res.download("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
+                        fs.rm("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
+                            if (err) {
+                                console.log(err);
+                            }
+                        });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_8 = _a.sent();
+                        console.log(error_8);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }

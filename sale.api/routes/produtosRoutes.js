@@ -12,4 +12,5 @@ exports.produtosRoutes.post('/salvar-produto', checkAuth, ProdutoController_1.Pr
 exports.produtosRoutes.post('/editar-produto', checkAuth, ProdutoController_1.ProdutosController.editarProduto);
 exports.produtosRoutes.post('/baixa-produto', checkAuth, ProdutoController_1.ProdutosController.baixaProduto);
 exports.produtosRoutes.post('/remover-produto', checkAuth, ProdutoController_1.ProdutosController.removerProduto);
+exports.produtosRoutes.post('/arquivos/planilha', checkAuth, ProdutoController_1.ProdutosController.exportarPlanilha);
 //# sourceMappingURL=produtosRoutes.js.map

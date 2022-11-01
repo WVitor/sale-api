@@ -16,10 +16,10 @@ var transport = nodemailer.createTransport({
 transport.use('compile', mailerHbs({
     'viewEngine': {
         extName: ".handlebars",
-        partialsDir: path.resolve('./views'),
+        partialsDir: path.resolve('./public/views'),
         defaultLayout: false,
     },
-    'viewPath': path.resolve('./views'),
+    'viewPath': path.resolve('./public/views'),
     'extName': '.handlebars'
 }));
 module.exports = transport;
