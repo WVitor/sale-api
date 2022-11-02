@@ -247,18 +247,15 @@ var ProdutosController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        if (!fs.existsSync("".concat(__dirname, "/../../public/files"))) {
-                            fs.mkdirSync("".concat(__dirname, "/../../public/files/"));
-                        }
                         return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.planilhaData()];
                     case 1:
                         produtos = _a.sent();
                         csv = new otc(produtos);
-                        return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
+                        return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
                     case 2:
                         _a.sent();
-                        res.download("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
-                        fs.rm("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
+                        res.download("".concat(__dirname, "/../../public/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
+                        fs.rm("".concat(__dirname, "/../../public/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
                             if (err) {
                                 console.log(err);
                             }
