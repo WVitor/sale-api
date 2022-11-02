@@ -67,7 +67,7 @@ exports.checkAuth = function (req, res, next) { return __awaiter(_this, void 0, 
             jwt.verify(req.session['token'], process.env.SECRET, function (err, decoded) {
                 if (err) {
                     req.session.destroy();
-                    return res.status(403).json({ error: "Error, não foi possivel identificar o cliente" });
+                    return res.status(403).json({ error: "Error, não foi possível identificar o cliente" });
                 }
                 else {
                     return next();
