@@ -65,7 +65,7 @@ app.use(ExpressSession({
     cookie: {
         secure: process.env.PROD === 'true' ? true : false,
         maxAge: 1800000,
-        httpOnly: process.env.PROD === 'true' ? false : true,
+        httpOnly: true,
     },
 }));
 app.use(function (req, res, next) {
