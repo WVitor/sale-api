@@ -245,13 +245,25 @@ var ProdutosController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 6, , 7]);
                         return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.planilhaData()];
                     case 1:
                         produtos = _a.sent();
                         csv = new otc(produtos);
-                        return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"))];
+                        if (!(process.env.PRDO === 'true')) return [3 /*break*/, 3];
+                        return [4 /*yield*/, csv.toDisk("/tmp/planilha-de-produtos.csv")];
                     case 2:
+                        _a.sent();
+                        res.download("/tmp/planilha-de-produtos.csv", function (error) {
+                            if (error) {
+                                console.log(error);
+                            }
+                            else
+                                (fs.writeFileSync("/tmp/planilha-de-produtos.csv", ""));
+                        });
+                        return [3 /*break*/, 5];
+                    case 3: return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"))];
+                    case 4:
                         _a.sent();
                         res.download("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"), function (error) {
                             if (error) {
@@ -260,12 +272,13 @@ var ProdutosController = /** @class */ (function () {
                             else
                                 (fs.writeFileSync("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"), ""));
                         });
-                        return [3 /*break*/, 4];
-                    case 3:
+                        _a.label = 5;
+                    case 5: return [3 /*break*/, 7];
+                    case 6:
                         error_8 = _a.sent();
                         console.log(error_8);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
