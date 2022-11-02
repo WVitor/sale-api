@@ -35,7 +35,7 @@ var Produto = /** @class */ (function () {
         __metadata("design:type", Number)
     ], Produto.prototype, "quantidade", void 0);
     __decorate([
-        (0, typeorm_1.Column)(),
+        (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
     ], Produto.prototype, "created_at", void 0);
     Produto = __decorate([
