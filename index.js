@@ -51,7 +51,7 @@ var fileStore = require('session-file-store')(ExpressSession);
 var Master = require('./src/modules/master');
 app.use(Express.urlencoded({ extended: true }));
 app.use(Express.json());
-app.use(cors({ credentials: true, origin: '*' }));
+app.use(cors({ credentials: true, origin: 'https://projetoestoque.vercel.app' }));
 app.use(ExpressSession({
     name: 'session',
     secret: process.env.SECRET,
