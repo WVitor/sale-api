@@ -39,7 +39,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProdutosController = void 0;
 var BaixaRepository_1 = require("../repositories/BaixaRepository");
 var ProdutoRepository_1 = require("../repositories/ProdutoRepository");
-var moment = require("moment");
 var otc = require("objects-to-csv");
 var fs = require("fs");
 var ProdutosController = /** @class */ (function () {
@@ -251,14 +250,15 @@ var ProdutosController = /** @class */ (function () {
                     case 1:
                         produtos = _a.sent();
                         csv = new otc(produtos);
-                        return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
+                        return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"))];
                     case 2:
                         _a.sent();
-                        res.download("".concat(__dirname, "/../../public/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
-                        fs.rm("".concat(__dirname, "/../../public/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
-                            if (err) {
-                                console.log(err);
+                        res.download("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"), function (error) {
+                            if (error) {
+                                console.log(error);
                             }
+                            else
+                                (fs.writeFileSync("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"), ""));
                         });
                         return [3 /*break*/, 4];
                     case 3:
