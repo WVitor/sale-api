@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProdutosController = void 0;
 var BaixaRepository_1 = require("../repositories/BaixaRepository");
 var ProdutoRepository_1 = require("../repositories/ProdutoRepository");
+var moment = require("moment");
 var otc = require("objects-to-csv");
 var fs = require("fs");
 var ProdutosController = /** @class */ (function () {
@@ -250,27 +251,31 @@ var ProdutosController = /** @class */ (function () {
                     case 1:
                         produtos = _a.sent();
                         csv = new otc(produtos);
-                        if (!(process.env.PRDO === 'true')) return [3 /*break*/, 3];
-                        return [4 /*yield*/, csv.toDisk("/tmp/planilha-de-produtos.csv")];
+                        if (!(process.env.PROD === 'true')) return [3 /*break*/, 3];
+                        return [4 /*yield*/, csv.toDisk("/tmp/Planilha-".concat(moment().format("DD-MM-YYYY"), ".csv"))];
                     case 2:
                         _a.sent();
-                        res.download("/tmp/planilha-de-produtos.csv", function (error) {
+                        res.download("/tmp/Planilha-".concat(moment().format("DD-MM-YYYY"), ".csv"), function (error) {
                             if (error) {
                                 console.log(error);
                             }
-                            else
-                                (fs.writeFileSync("/tmp/planilha-de-produtos.csv", ""));
+                            else {
+                                fs.rm("/tmp/Planilha-".concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
+                                    if (err) {
+                                        console.log(err);
+                                    }
+                                });
+                            }
                         });
                         return [3 /*break*/, 5];
-                    case 3: return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"))];
+                    case 3: return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
                     case 4:
                         _a.sent();
-                        res.download("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"), function (error) {
-                            if (error) {
-                                console.log(error);
+                        res.download("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
+                        fs.rm("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
+                            if (err) {
+                                console.log(err);
                             }
-                            else
-                                (fs.writeFileSync("".concat(__dirname, "/../../public/files/planilha-de-produtos.csv"), ""));
                         });
                         _a.label = 5;
                     case 5: return [3 /*break*/, 7];
