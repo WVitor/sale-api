@@ -47,12 +47,11 @@ var autenticacaoRoutes_1 = require("./src/routes/autenticacaoRoutes");
 var usuarioRoutes_1 = require("./src/routes/usuarioRoutes");
 var funcionalidadesRoutes_1 = require("./src/routes/funcionalidadesRoutes");
 var tipoUsuarioRoutes_1 = require("./src/routes/tipoUsuarioRoutes");
-var https = require("https");
 var fileStore = require('session-file-store')(ExpressSession);
 var Master = require('./src/modules/master');
 app.use(Express.urlencoded({ extended: true }));
 app.use(Express.json());
-app.use(cors({ credentials: true, origin: 'https://projetoestoque.vercel.app' }));
+app.use(cors({ credentials: true, origin: '*' }));
 app.use(ExpressSession({
     name: 'session',
     secret: process.env.SECRET,
@@ -62,8 +61,8 @@ app.use(ExpressSession({
         logFn: function () { },
         path: require('path').join(require('os').tmpdir(), 'sessions')
     }),
+    proxy: true,
     cookie: {
-        sameSite: "none",
         secure: process.env.PROD === 'true' ? true : false,
         maxAge: 1800000,
         httpOnly: process.env.PROD === 'true' ? false : true,
@@ -92,16 +91,9 @@ app.get('/', function (req, res) {
 });
 data_source_1.AppDataSource.initialize().then(function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        if (process.env.PROD === 'true') {
-            https.createServer(app).listen(process.env.PORT, function () {
-                console.log("rodando em banco de producao");
-            });
-        }
-        else {
-            app.listen(process.env.PORT, function () {
-                console.log("Escutando na porta ".concat(process.env.PORT));
-            });
-        }
+        app.listen(process.env.PORT, function () {
+            console.log("Escutando na porta ".concat(process.env.PORT));
+        });
         return [2 /*return*/];
     });
 }); }).catch(function (error) { return console.log(error); });
