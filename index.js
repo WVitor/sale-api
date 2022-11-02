@@ -62,9 +62,10 @@ app.use(ExpressSession({
         path: require('path').join(require('os').tmpdir(), 'sessions')
     }),
     cookie: {
-        secure: true,
+        sameSite: "none",
+        secure: process.env.PROD === 'true' ? true : false,
         maxAge: 1800000,
-        httpOnly: false, //process.env.PROD === 'true' ? false : true,
+        httpOnly: process.env.PROD === 'true' ? false : true,
     },
 }));
 app.use(function (req, res, next) {
