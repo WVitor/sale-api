@@ -51,7 +51,7 @@ var fileStore = require('session-file-store')(ExpressSession);
 var Master = require('./src/modules/master');
 app.use(Express.urlencoded({ extended: true }));
 app.use(Express.json());
-app.use(cors({ credentials: true, origin: '*' }));
+app.use(cors({ credentials: true, origin: 'https://projetoestoque.vercel.app' }));
 app.use(ExpressSession({
     name: 'session',
     secret: process.env.SECRET,
@@ -62,9 +62,9 @@ app.use(ExpressSession({
         path: require('path').join(require('os').tmpdir(), 'sessions')
     }),
     cookie: {
-        secure: process.env.PROD === 'true' ? true : false,
+        secure: true,
         maxAge: 1800000,
-        httpOnly: process.env.PROD === 'true' ? false : true,
+        httpOnly: false, //process.env.PROD === 'true' ? false : true,
     },
 }));
 app.use(function (req, res, next) {
@@ -90,11 +90,17 @@ app.get('/', function (req, res) {
 });
 data_source_1.AppDataSource.initialize().then(function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
+        // if(process.env.PROD === 'true'){
+        //     const options ={   
+        //         key: fs.readFileSync('privatekey.pem'),
+        //         cert: fs.readFileSync('certificate.pem')
+        //    }
+        //     https.createServer(app).listen(process.env.PORT, ()=>{
+        //         console.log(`rodando em banco de producao`)
+        //     })
+        // }else{
         app.listen(process.env.PORT, function () {
             console.log("Escutando na porta ".concat(process.env.PORT));
-            if (process.env.PROD === 'true') {
-                console.log("rodando em banco de producao");
-            }
         });
         return [2 /*return*/];
     });
