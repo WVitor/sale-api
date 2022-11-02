@@ -247,6 +247,9 @@ var ProdutosController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
+                        if (!fs.existsSync("".concat(__dirname, "/../../public/files"))) {
+                            fs.mkdirSync("".concat(__dirname, "/../../public/files/"));
+                        }
                         return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.planilhaData()];
                     case 1:
                         produtos = _a.sent();
