@@ -42,6 +42,7 @@ var ProdutoRepository_1 = require("../repositories/ProdutoRepository");
 var moment = require("moment");
 var otc = require("objects-to-csv");
 var fs = require("fs");
+var path = require("path");
 var ProdutosController = /** @class */ (function () {
     function ProdutosController() {
     }
@@ -242,48 +243,32 @@ var ProdutosController = /** @class */ (function () {
     };
     ProdutosController.exportarPlanilha = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var produtos, csv, error_8;
+            var produtos, csv, tmpDir, error_8;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 6, , 7]);
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.planilhaData()];
                     case 1:
                         produtos = _a.sent();
                         csv = new otc(produtos);
-                        if (!(process.env.PROD === 'true')) return [3 /*break*/, 3];
-                        return [4 /*yield*/, csv.toDisk("/tmp/Planilha-".concat(moment().format("DD-MM-YYYY"), ".csv"))];
+                        tmpDir = path.join(require('os').tmpdir(), 'sale/files');
+                        if (!fs.existsSync(tmpDir)) {
+                            fs.mkdirSync(tmpDir);
+                        }
+                        return [4 /*yield*/, csv.toDisk("".concat(tmpDir, "/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
                     case 2:
                         _a.sent();
-                        res.download("/tmp/Planilha-".concat(moment().format("DD-MM-YYYY"), ".csv"), function (error) {
-                            if (error) {
-                                console.log(error);
-                            }
-                            else {
-                                fs.rm("/tmp/Planilha-".concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                });
-                            }
-                        });
-                        return [3 /*break*/, 5];
-                    case 3: return [4 /*yield*/, csv.toDisk("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"))];
-                    case 4:
-                        _a.sent();
-                        res.download("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
-                        fs.rm("".concat(__dirname, "/../../public/files/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) {
-                            if (err) {
-                                console.log(err);
-                            }
-                        });
-                        _a.label = 5;
-                    case 5: return [3 /*break*/, 7];
-                    case 6:
+                        res.download("".concat(tmpDir, "/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"));
+                        fs.rm("".concat(tmpDir, "/Planilha-").concat(moment().format("DD-MM-YYYY"), ".csv"), function (err) { if (err) {
+                            console.log(err);
+                        } });
+                        return [3 /*break*/, 4];
+                    case 3:
                         error_8 = _a.sent();
                         console.log(error_8);
-                        return [3 /*break*/, 7];
-                    case 7: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

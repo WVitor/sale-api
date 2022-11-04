@@ -59,7 +59,7 @@ app.use(ExpressSession({
     saveUninitialized: false,
     store: new fileStore({
         logFn: function () { },
-        path: require('path').join(require('os').tmpdir(), 'sessions')
+        path: require('path').join(require('os').tmpdir(), 'sale/sessions')
     }),
     proxy: true,
     cookie: {
