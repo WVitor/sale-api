@@ -186,7 +186,7 @@ var AutenticacaoController = /** @class */ (function () {
             });
         });
     };
-    AutenticacaoController.tokenValidacao = function (req, res, next) {
+    AutenticacaoController.tokenValidacao = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var token;
             return __generator(this, function (_a) {
@@ -195,8 +195,11 @@ var AutenticacaoController = /** @class */ (function () {
                     if (err) {
                         return res.status(400).json({ error: 'token expirado' });
                     }
+                    else {
+                        return res.status(200).json({ message: 'token validado' });
+                    }
                 });
-                return [2 /*return*/, res.status(200).json({ message: 'token validado' })];
+                return [2 /*return*/];
             });
         });
     };
