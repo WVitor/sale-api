@@ -9,5 +9,5 @@ exports.autenticacaoRoutes.post('/entrar', notCheckAuth, AutenticacaoController_
 exports.autenticacaoRoutes.post('/sair', checkAuth, AutenticacaoController_1.AutenticacaoController.sair);
 exports.autenticacaoRoutes.post('/esqueceu-senha', notCheckAuth, AutenticacaoController_1.AutenticacaoController.esqueceuSenha);
 exports.autenticacaoRoutes.post('/redefinir-senha', notCheckAuth, AutenticacaoController_1.AutenticacaoController.redefinirSenha);
-exports.autenticacaoRoutes.post('/token-validacao', notCheckAuth, AutenticacaoController_1.AutenticacaoController.tokenValidacao);
+exports.autenticacaoRoutes.post('/token-validacao', AutenticacaoController_1.AutenticacaoController.tokenValidacao);
 //# sourceMappingURL=autenticacaoRoutes.js.map
