@@ -63,6 +63,7 @@ app.use(ExpressSession({
     }),
     proxy: true,
     cookie: {
+        domain: "https://projetoestoque.vercel.app",
         sameSite: "none",
         secure: process.env.PROD === 'true' ? true : false,
         maxAge: 1800000,
