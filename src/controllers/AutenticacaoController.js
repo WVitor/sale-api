@@ -190,7 +190,7 @@ var AutenticacaoController = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var token;
             return __generator(this, function (_a) {
-                token = req.session['token'];
+                token = req.session['token'] || req.body.token;
                 jwt.verify(token, process.env.SECRET, function (err, decoded) {
                     if (err) {
                         return res.status(400).json({ error: 'token expirado' });
