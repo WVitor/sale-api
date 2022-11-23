@@ -47,4 +47,3 @@ var TipoUsuario = /** @class */ (function () {
     return TipoUsuario;
 }());
 exports.TipoUsuario = TipoUsuario;
-//# sourceMappingURL=Tipo_Usuario.js.map

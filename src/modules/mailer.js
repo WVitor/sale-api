@@ -23,4 +23,3 @@ transport.use('compile', mailerHbs({
     'extName': '.handlebars'
 }));
 module.exports = transport;
-//# sourceMappingURL=mailer.js.map

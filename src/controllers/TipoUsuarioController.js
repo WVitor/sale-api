@@ -150,4 +150,3 @@ var TipoUsuarioController = /** @class */ (function () {
     return TipoUsuarioController;
 }());
 exports.TipoUsuarioController = TipoUsuarioController;
-//# sourceMappingURL=TipoUsuarioController.js.map

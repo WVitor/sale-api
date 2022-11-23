@@ -98,4 +98,3 @@ exports.notCheckAuth = function (req, res, next) { return __awaiter(_this, void 
         return [2 /*return*/];
     });
 }); };
-//# sourceMappingURL=tokenValidation.js.map

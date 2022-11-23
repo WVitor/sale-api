@@ -45,4 +45,3 @@ var Funcionalidade = /** @class */ (function () {
     return Funcionalidade;
 }());
 exports.Funcionalidade = Funcionalidade;
-//# sourceMappingURL=Funcionalidade.js.map

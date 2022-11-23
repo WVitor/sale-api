@@ -76,4 +76,3 @@ var Master = function (master, email) { return __awaiter(void 0, void 0, void 0,
     });
 }); };
 module.exports = Master;
-//# sourceMappingURL=master.js.map

@@ -276,4 +276,3 @@ var ProdutosController = /** @class */ (function () {
     return ProdutosController;
 }());
 exports.ProdutosController = ProdutosController;
-//# sourceMappingURL=ProdutoController.js.map

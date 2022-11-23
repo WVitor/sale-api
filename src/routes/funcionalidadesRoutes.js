@@ -9,4 +9,3 @@ exports.funcionalidadesRoutes.get('/funcionalidades', checkAuth, Funcionalidades
 exports.funcionalidadesRoutes.get('/funcionalidades/:id', checkAuth, FuncionalidadesController_1.FuncionalidadesController.listarFuncionalidadePorId);
 exports.funcionalidadesRoutes.post('/registrar-funcionalidade', checkAuth, FuncionalidadesController_1.FuncionalidadesController.registrarFuncionalidade);
 exports.funcionalidadesRoutes.post('/remover-funcionalidade', checkAuth, FuncionalidadesController_1.FuncionalidadesController.removerFuncionalidade);
-//# sourceMappingURL=funcionalidadesRoutes.js.map

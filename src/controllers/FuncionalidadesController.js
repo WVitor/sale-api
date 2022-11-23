@@ -160,4 +160,3 @@ var FuncionalidadesController = /** @class */ (function () {
     return FuncionalidadesController;
 }());
 exports.FuncionalidadesController = FuncionalidadesController;
-//# sourceMappingURL=FuncionalidadesController.js.map

@@ -13,4 +13,3 @@ exports.TipoUsuarioRepository = data_source_1.AppDataSource.getRepository(Tipo_U
             .getOne();
     },
 });
-//# sourceMappingURL=TipoUsuarioRepository.js.map

@@ -33,4 +33,3 @@ var AppDataSourcePROD = new typeorm_1.DataSource({
     subscribers: [],
 });
 exports.AppDataSource = process.env.PROD === 'true' ? AppDataSourcePROD : AppDataSourceDEV;
-//# sourceMappingURL=data-source.js.map

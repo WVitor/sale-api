@@ -12,4 +12,3 @@ exports.ProdutoRepository = data_source_1.AppDataSource.getRepository(Produto_1.
             .getMany();
     },
 });
-//# sourceMappingURL=ProdutoRepository.js.map

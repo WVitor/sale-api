@@ -10,4 +10,3 @@ exports.autenticacaoRoutes.post('/sair', checkAuth, AutenticacaoController_1.Aut
 exports.autenticacaoRoutes.post('/esqueceu-senha', notCheckAuth, AutenticacaoController_1.AutenticacaoController.esqueceuSenha);
 exports.autenticacaoRoutes.post('/redefinir-senha', notCheckAuth, AutenticacaoController_1.AutenticacaoController.redefinirSenha);
 exports.autenticacaoRoutes.post('/token-validacao', AutenticacaoController_1.AutenticacaoController.tokenValidacao);
-//# sourceMappingURL=autenticacaoRoutes.js.map
