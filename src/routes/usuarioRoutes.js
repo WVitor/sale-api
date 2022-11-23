@@ -7,3 +7,4 @@ var _a = require('../modules/tokenValidation'), checkAuth = _a.checkAuth, tokenV
 exports.usuarioRoutes = Express.Router();
 exports.usuarioRoutes.get('/usuarios', UsuarioController_1.UsuarioController.listarTodosUsuarios);
 exports.usuarioRoutes.get('/usuarios/:id', UsuarioController_1.UsuarioController.listarUsuarioPorId);
+exports.usuarioRoutes.get('/usuario-autenticado', UsuarioController_1.UsuarioController.buscarUsuarioAutenticado);

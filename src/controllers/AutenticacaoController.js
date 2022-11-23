@@ -56,11 +56,7 @@ var AutenticacaoController = /** @class */ (function () {
                         if (!email || !password) {
                             return [2 /*return*/, res.status(400).json({ error: "informe todos os parametros no body da requisição" })];
                         }
-                        return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.findOne({
-                                select: { id: true, nome: true, password: true, email: true, tipo: { id: true, nome: true, nivel: true, funcionalidades: { id: true, nome: true, nivel: true, url: true } } },
-                                relations: { tipo: { funcionalidades: true }, },
-                                where: { email: email }
-                            })];
+                        return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.findOneBy({ email: email })];
                     case 1:
                         usuario_1 = _b.sent();
                         if (!usuario_1) {
@@ -72,8 +68,9 @@ var AutenticacaoController = /** @class */ (function () {
                         }
                         token_1 = jwt.sign({ userId: usuario_1.id }, process.env.SECRET, { expiresIn: 120 });
                         req.session["token"] = token_1;
+                        req.session["userId"] = usuario_1.id;
                         req.session.save(function () {
-                            return res.status(200).json({ message: "Usuario ".concat(usuario_1.nome, " logado com sucesso"), token: token_1, usuario: usuario_1 });
+                            return res.status(200).json({ message: "Usuario ".concat(usuario_1.nome, " logado com sucesso"), token: token_1 });
                         });
                         return [3 /*break*/, 3];
                     case 2:

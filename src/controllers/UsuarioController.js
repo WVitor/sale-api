@@ -82,6 +82,30 @@ var UsuarioController = /** @class */ (function () {
             });
         });
     };
+    UsuarioController.buscarUsuarioAutenticado = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var usuario, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, UsuarioRepository_1.UsuarioRepository.find({
+                                select: { id: true, nome: true, email: true, tipo: { nome: true, nivel: true, funcionalidades: { nome: true, nivel: true, url: true } } },
+                                relations: { tipo: { funcionalidades: true }, },
+                                where: { id: req.session["userId"] }
+                            })];
+                    case 1:
+                        usuario = _a.sent();
+                        return [2 /*return*/, res.status(200).json(usuario)];
+                    case 2:
+                        error_3 = _a.sent();
+                        console.log(error_3);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return UsuarioController;
 }());
 exports.UsuarioController = UsuarioController;
