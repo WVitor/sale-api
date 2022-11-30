@@ -165,7 +165,7 @@ var ProdutosController = /** @class */ (function () {
                         return [4 /*yield*/, BaixaRepository_1.BaixaRepository.save({ codigo: produto.codigo })];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.delete(produto)];
+                        return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.remove(produto)];
                     case 3:
                         _a.sent();
                         return [2 /*return*/, res.status(200).json({ message: "O produto ".concat(produto.codigo, " foi recebeu baixa com sucesso.") })];
@@ -195,7 +195,7 @@ var ProdutosController = /** @class */ (function () {
                         if (!produto) {
                             return [2 /*return*/, res.status(400).json({ error: "Produto com id '".concat(id, "' n\u00E3o encontrado.") })];
                         }
-                        return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.delete(produto)];
+                        return [4 /*yield*/, ProdutoRepository_1.ProdutoRepository.remove(produto)];
                     case 2:
                         _a.sent();
                         return [2 /*return*/, res.status(200).json({ message: "O produto ".concat(produto.codigo, " foi deletado com sucesso.") })];
